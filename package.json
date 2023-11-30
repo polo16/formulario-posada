@@ -20,6 +20,7 @@
     "uuid": "^9.0.1",
     "web-vitals": "^1.1.2"
   },
+  "homepage": "http://insumosalma.com.mx",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

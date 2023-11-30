@@ -1,0 +1,9 @@
+[[redirects]]
+  from = "/invitacion?id=*"
+  to = "/invitacion?query"
+  status = 301
+  force = false
+  query = {id=":id"} 
+  #  apply this rule for /old-path?path=example
+  conditions = {Language = ["en","es"], Country = ["US"]}
+
