@@ -1,22 +1,4 @@
 [[redirects]]
-  from = "/invitacion?id=*"
-  to = "/invitacion?query"
-  status = 301
-  force = false
-  query = {id=":id"} 
-  #  apply this rule for /old-path?path=example
-  conditions = {Language = ["en","es"], Country = ["US"]}
-
-[[redirects]]
-  from = "/*"
-  force = true
-  to = "/index.html"
-
-[[redirects]]
-from = "/invitacion/*"
-to = "/binvitacionlog/:splat"
-
-
-[[redirects]]
-from = "/invitacion/*"
-to = "/invitacionlog/:splat"
+from = "/*"
+to = "/index.html"
+status = 200
