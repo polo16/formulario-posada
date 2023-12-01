@@ -9,8 +9,14 @@
 
 [[redirects]]
   from = "/*"
+   force = true
   to = "/formulario"
 
 [[redirects]]
 from = "/invitacion/*"
 to = "/binvitacionlog/:splat"
+
+
+[[redirects]]
+from = "/invitacion/*"
+to = "/invitacionlog/:splat"
