@@ -9,8 +9,8 @@
 
 [[redirects]]
   from = "/*"
-   force = true
-  to = "/formulario"
+  force = true
+  to = "/index.html"
 
 [[redirects]]
 from = "/invitacion/*"
