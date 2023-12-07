@@ -131,6 +131,8 @@ const Formulario = () => {
 								<option value="SANTA ROSA" >SANTA ROSA </option>
 								<option value="BICENTENARIO"> BICENTENARIO</option>
 								<option value="ACUARIO"> ACUARIO</option>
+								<option value="ISLAS TRES"> ISLAS TRES</option>
+								<option value="HACIENDA DEL SEMINARIO"> HACIENDA DEL SEMINARIO</option>
 								<option value="VALLES DEL EJIDO"> VALLES DEL EJIDO</option>
 								<option value="VILLA GALAXIA"> VILLA GALAXIA</option>
 								<option value="VILLA UNION"> VILLA UNION</option>
