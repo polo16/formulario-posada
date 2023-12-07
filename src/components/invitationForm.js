@@ -130,6 +130,7 @@ const Formulario = () => {
 								<option value="EJERCITO">EJERCITO</option>
 								<option value="SANTA ROSA" >SANTA ROSA </option>
 								<option value="BICENTENARIO"> BICENTENARIO</option>
+								<option value="ACUARIO"> ACUARIO</option>
 								<option value="VALLES DEL EJIDO"> VALLES DEL EJIDO</option>
 								<option value="VILLA GALAXIA"> VILLA GALAXIA</option>
 								<option value="VILLA UNION"> VILLA UNION</option>
