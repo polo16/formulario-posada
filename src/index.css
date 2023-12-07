@@ -104,7 +104,12 @@ body {
 	padding-top: 20px;
 	color: #02a802;
 }
-
+.formulario .error {
+	text-align: center;
+	font-size: 14px;
+	padding-top: 20px;
+	color: #a81502;
+}
 .formulario input[type="radio"] {
 	width: auto;
 }

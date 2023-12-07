@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import axios from "axios";
 import { v4 as uuidv4 } from 'uuid';
-import { fs } from 'fs';
 import { Collapse } from '@material-ui/core';
 import posada from '../assets/86cd5dfe-7f24-4d51-a886-951b28a3d094.png';
 
@@ -12,17 +11,18 @@ const baseURL = "https://shh4hy6w3x.us-east-2.awsapprunner.com/api/saveUser";
 const Formulario = () => {
 	const [post, setPost] = React.useState(null);
 	const [formularioEnviado, cambiarFormularioEnviado] = useState(false);
+	const [formularioError, cambiarFormularioError] = useState(false);
 	const [showForm, setShowForm] = useState(false);
 
 	React.useEffect(() => {
-		axios.get(`${baseURL}/1`).then((response) => {
+		console.log("useEffect");
+		axios.post(`${baseURL}`).then((response) => {
 			setPost(response.data);
 		});
 	}, []);
 
 	function createPost(valores) {
 		const uuid = uuidv4();
-		// saveQr();
 		console.log(uuid);
 		console.log(valores.invitados);
 		const sumaInvitados = parseInt(valores.invitados) + 1;
@@ -42,42 +42,21 @@ const Formulario = () => {
 			})
 			.then((response) => {
 				setPost(response.data);
+				return response.data;
+			}).catch(function (error) {
+				console.log('Error al insertar entrada de invitado.');
 			});
-	}
-
-	function saveQr() {
-
-		// var qr = require('qr-image');
-
-		// var qr_svg = qr.image('I love QR!', { type: 'svg' });
-		// qr_svg.pipe(require('fs').createWriteStream('i_love_qr.svg'));
-
-		// var svg_string = qr.imageSync('I love QR!', { type: 'svg' });
-		// console.log("desde el saveQr");
-
-
-
-		const fs = require('fs');
-		const data = "This is the new content of the file.";
-		fs.writeFile(`/assets/sfile.svg`, data, (err) => {
-			if (err) {
-				throw err;
-				console.log("Data has been written to file successfully.");
-			}
-		});
-	}
-
+}
 
 	return (
 		<div className='containerForm'>
-						
-			
 			<Formik
 				initialValues={{
 					nombre: '',
 					telefono: '',
 					sucursal: '',
 					invitados: 0,
+					mensaje: '',
 					contador: 0
 
 				}}
@@ -110,6 +89,7 @@ const Formulario = () => {
 					console.log('Formulario enviado');
 					cambiarFormularioEnviado(true);
 					setTimeout(() => cambiarFormularioEnviado(false), 5000);
+					setTimeout(() => cambiarFormularioError(false), 5000);
 					setShowForm(false);
 				}}
 			>
@@ -150,7 +130,7 @@ const Formulario = () => {
 								<option value="EJERCITO">EJERCITO</option>
 								<option value="SANTA ROSA" >SANTA ROSA </option>
 								<option value="BICENTENARIO"> BICENTENARIO</option>
-								<option value="VALLES DEL EJIDO"> VILLA UNION</option>
+								<option value="VALLES DEL EJIDO"> VALLES DEL EJIDO</option>
 								<option value="VILLA GALAXIA"> VILLA GALAXIA</option>
 								<option value="VILLA UNION"> VILLA UNION</option>
 								<option value="VILLA UNION2"> VILLA UNION</option>
@@ -175,6 +155,7 @@ const Formulario = () => {
 								<option value="VILLA VERDE"> VILLA VERDE</option>
 								<option value="ZONA DORADA"> ZONA DORADA</option>
 								<option value="PLAZA CARACOL"> PLAZA CARACOL</option>
+								<option value="RIO PRESIDIO"> RIO PRESIDIO</option>
 								<option value="PLANTA"> PLANTA </option>
 							</Field>
 							<ErrorMessage name="sucursal" component={() => (<div className="error">{errors.sucursal}</div>)} />
@@ -209,11 +190,12 @@ const Formulario = () => {
 						</div>
 
 						<div>
-							<Field name="mensaje" as="textarea" placeholder="Mensaje" />
+							<Field id="mensaje" name="mensaje" as="textarea" placeholder="Notas" />
 						</div>
 
 						<button type="submit" >Enviar</button>
 						{formularioEnviado && <p className= "exito">Formulario enviado con exito!</p>}
+						{formularioError && <p className= "error">Error al enviar el formulario</p>}
 					</Form>
 				)}
 
